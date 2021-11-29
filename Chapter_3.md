@@ -30,7 +30,7 @@ We now have 5 decimal numbers placed onto the stack which can be used for later 
 
 This is very useful when programming, to be able to examine what is on the stack. It prints out the contents of the stack, but leaves the numbers in place.
 
-On typing Control P, MINT will respond with something similar to this:
+On typing `Control P`, MINT will respond with something similar to this:
 
 ```
 > => 12345 00035 00123 00999 01066
@@ -40,7 +40,7 @@ The `=>` indicates that this is the current contents of the stack. We can see th
 
 Printing out the top of the stack.
 
-Often when programming, we choose to place the result of a computation onto the top of the stack, and all we want to do is print it out so that we can see what the result is. For this we use the DOT command, which is a single fullstop or period character.
+Often when programming, we choose to place the result of a computation onto the top of the stack, and all we want to do is print it out so that we can see what the result is. For this we use the DOT command `.`, which is a single fullstop or period character.
 
 This will remove the top number off the stack and print it out to the terminal as a 5 digit decimal integer. Note that it actively removes it from the top of the stack (or consumes it) so the next number will automatically rise to the top of the stack.
 
@@ -52,7 +52,7 @@ If we now type a single `.`, followed by _ENTER_, MINT will reply with
 >
 ```
 
-And if we use Control P. to examine the stack we are left with
+And if we use `Control P`. to examine the stack we are left with
 
 ```
 > => 12345 00035 00123 00999
@@ -63,7 +63,7 @@ And if we use Control P. to examine the stack we are left with
 If we now type 4 `.`s followed by _ENTER_, MINT will print out the last 4 remaining numbers on the stack, leaving it empty. However, instead we will introduce one of the arithmetic operations ADD, for which we use the `+` character followed by _ENTER_
 This will ADD the top two members of the stack, in our case 00999 and 00123
 
-Type + followed by _ENTER_ and then Control P followed by _ENTER_ to examine the new status of the stack
+Type + followed by _ENTER_ and then `Control P` followed by _ENTER_ to examine the new status of the stack
 
 ```
 > -
