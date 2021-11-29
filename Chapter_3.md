@@ -149,7 +149,7 @@ Type `Control B` followed by `Control P`
 
 The numbers are being displayed in HEX.
 
-We can also print out the values on the stack in HEX. For this we use the COMMA command. It works similarly to the DOT command but expresses the top member on the stack as a 4 digit HEX number.
+We can also print out the values on the stack in HEX. For this we use the `,` command. It works similarly to the DOT command but expresses the top member on the stack as a 4 digit HEX number.
 
 Type five COMMAS followed by _ENTER_
 
