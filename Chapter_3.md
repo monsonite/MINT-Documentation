@@ -77,9 +77,11 @@ Now let's try a subtraction. This will subtract the top number on the stack from
 
 Type - for subtraction, followed by _ENTER_. Then use `Control P` _ENTER_ to re-examine the stack.
 
+```
 > -
 
 > => 12345 64449
+```
 
 Ooops, that doesn't look right. We were expecting 35 - 1122, which should give -1087. Well if we remember the lesson from [Chapter 2](./Chapter_2.md), we will recall that negative numbers use a system called signed integers, and that `64489` is actually how MINT represents the negative number `-1087`.
 
@@ -209,5 +211,7 @@ In this chapter we covered the following commands:
 
 Control Commands:
 
-| ^B | toggle base DECIMAL/HEXADECIMAL |
-| ^P | print stack |
+| Key | Description                     |
+| --- | ------------------------------- |
+| ^B  | toggle base DECIMAL/HEXADECIMAL |
+| ^P  | print stack                     |
