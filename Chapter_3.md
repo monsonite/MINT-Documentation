@@ -10,7 +10,7 @@ As MINT uses a 16-bit integer system for all calculations, numbers are restricte
 
 Numbers are stored directly onto the stack, which as we learnt in [Chapter 2](./Chapter_2.md) is a form of push-down memory storage method sometime known as Last In, First Out or _LIFO_.
 
-Numbers are PUSHED onto the stack when we want to store them and POPPED of the stack when we want to retrieve them for use.
+Numbers are PUSHED onto the stack when we want to store them and POPPED off the stack when we want to retrieve them for use.
 
 Decimal numbers will be more familliar to most users, so we will start with these.
 
@@ -20,7 +20,7 @@ To _PUSH_ a number onto the stack we just type it in and press _ENTER_
 12345 <ENTER>
 ```
 
-The MINT program will return with the `>` prompt to show that the number has been accepted. We can then type one or more numbers which will also be placed onto the stack. You may place about 50 numbers onto the stack, but it is unusual to need to use more than about 4 at a time. The _GOLDEN RULE_ is that consecutive numbers must be separated by one or more space characters. The MINT interpreter takes each number in turn, until it "sees" the space, and places it onto the stack. It then works its way along the line handling each number until it encounters the end of the line, signified by _ENTER_.
+The MINT program will return with the `>` prompt to show that the number has been accepted. We can then type one or more numbers which will also be placed onto the stack. You may place about 50 numbers onto the stack, but it is unusual to need to use more than about 4 at a time. The GOLDEN RULE is that consecutive numbers must be separated by one or more space characters. The MINT interpreter takes each number in turn, until it "sees" the space, and places it onto the stack. It then works its way along the line handling each number until it encounters the end of the line, signified by _ENTER_.
 
 ```
 35 123 999 1066 <ENTER>
@@ -85,7 +85,7 @@ Type - for subtraction, followed by _ENTER_. Then use `Control P` _ENTER_ to re-
 
 Ooops, that doesn't look right. We were expecting 35 - 1122, which should give -1087. Well if we remember the lesson from [Chapter 2](./Chapter_2.md), we will recall that negative numbers use a system called signed integers, and that `64489` is actually how MINT represents the negative number `-1087`.
 
-We can prove this by _negating_ the top member of the stack. For this we have the command _UNDERSCORE_ or `_` which is used to convert the negative number representation into a positive answer.
+We can prove this by _negating_ the top member of the stack. For this we have the command UNDERSCORE or `_` which is used to convert the negative number representation into a positive answer.
 
 If you now type `_` _ENTER_ followed by `Control P`, you will see that the top member of the stack has been converted to `01087`, which is the _MAGNITUDE_ of the negative number
 
