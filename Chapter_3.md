@@ -197,16 +197,16 @@ We have learnt that `Control P` allows us to examine the current contents of the
 
 In this chapter we covered the following commands:
 
-| Symbol | Description                               | Effect   |
-| ------ | ----------------------------------------- | -------- |
-| +      | 16-bit integer addition ADD               | a b -- c |
-| -      | 16-bit integer subtraction SUB            | a b -- c |
-| \*     | 8-bit by 8-bit integer multiplication MUL | a b -- c |
-| /      | 16-bit by 8-bit division DIV              | a b -- c |
-| \_     | 16-bit negation (2's complement) NEG      | a -- b   |
-| # | the following number is in hexadecimal HASH | a -- |
-| . | print the top member of the stack as a decimal number DOT | a -- |
-| , | print the number on the stack as a hexadecimal COMMA | a -- |
+| Symbol | Description                                               | Effect   |
+| ------ | --------------------------------------------------------- | -------- |
+| +      | 16-bit integer addition ADD                               | a b -- c |
+| -      | 16-bit integer subtraction SUB                            | a b -- c |
+| \*     | 8-bit by 8-bit integer multiplication MUL                 | a b -- c |
+| /      | 16-bit by 8-bit division DIV                              | a b -- c |
+| \_     | 16-bit negation (2's complement) NEG                      | a -- b   |
+| #      | the following number is in hexadecimal HASH               | a --     |
+| .      | print the top member of the stack as a decimal number DOT | a --     |
+| ,      | print the number on the stack as a hexadecimal COMMA      | a --     |
 
 Control Commands:
 
