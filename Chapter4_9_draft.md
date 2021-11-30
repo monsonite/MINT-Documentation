@@ -25,14 +25,20 @@ _OVER_ This copies the 2nd member of the stack to the top of the stack, leapfrog
 So when do we use these stack operations?
 
 We use DUP when we need to use the top item twice. If we put a number on the stack and want to square it (multiply it by itself) we use DUP to make a copy followed by a multiplication *
-
-5 " * .      DUPLICATE the 5 on the stack, multiply and print the answer. This is a very simple use case.
+```
+5 " * .   <ENTER>      
+```
+DUPLICATE the 5 on the stack, multiply and print the answer. This is a very simple use case.
 
 We use _DROP_ when there is a value on the top of the stack that we don't need.  We can DROP it and this exposes the 2nd member of the stack.
 
 One example might be when we perform a DIVISION, but we are only interested in the REMAINDER (we are performing a MODULUS operation). We DROP the QUOTIENT from the top of the stack, leaving the REMAINDER for us to use.
 ```
-5000 15 / ' .  <ENTER>  ```This will print the REMAINDER of 5000 divided by 15, which is 00005
+5000 15 / ' .  <ENTER>  
+```
+
+
+This will print the REMAINDER of 5000 divided by 15, which is 00005
 
 SWAP is used to access the 2nd stack member, use it, and then still have the first member remaining on the stack. We will look at SWAP again in Chapter 6 when we look at memory and variables.
 
@@ -54,27 +60,38 @@ DUP
 ```
 
 ```
-> => 00001 01234 05678 09999 01000 01000    ```The last item has been DUPLICATED
+> => 00001 01234 05678 09999 01000 01000    
+```
+The last item has been DUPLICATED
 
 
 Now use `'` for DROP followed by ENTER. Then use Control P to examine the stack
 ```
 > ' <ENTER>
 
-> => 00001 01234 05678 09999 01000      ```The last item 01000 has been DROPPED
+> => 00001 01234 05678 09999 01000      
+```
+
+The last item 01000 has been DROPPED
 
 
 Now use `%` for OVER and observe the result
 ```
 > % <ENTER>
 
-> => 00001 01234 05678 09999 01000 09999   ``` The 09999 has been copied and leapfrogged the 01000
+> => 00001 01234 05678 09999 01000 09999   
+``` 
+
+The 09999 has been copied and leapfrogged the 01000
 
 Finally we will use SWAP $ followed by ENTER
 ```
 > $  <ENTER>
 
-> => 00001 01234 05678 09999 09999 01000   The 01000 and the 09999 have SWAPPED places.
+> => 00001 01234 05678 09999 09999 01000   
+```
+
+The 01000 and the 09999 have SWAPPED places.
 
 
 Other, more complex, stack manipulations are possible, but for MINT these are the most commonly used.
@@ -114,13 +131,17 @@ I showed a snippet of MINT code DUP MULT DOT, that could be used to print out th
 
 First we have to give it a memorable name, and I will use uppercase S to remind me of the word SQUARE. We then have to enclose the magic "snippet" between a couple of characters, so we know where the definition starts and where it ends.
 
-We use the COLON character : to start the definition, then the name S, followed by the code "snippet" and finally the SEMICOLON character ; to end the definition. 
+We use the COLON character `:` to start the definition, then the name `S`, followed by the code "snippet" and finally the SEMICOLON character ; to end the definition. 
+```
+:S " * . ; 
+```    
 
-:S " * . ;     
+There is one proviso, the NAME S must immediately follow the starting COLON. Other spaces have been left for clarity but are not needed. We can omit all the spaces thus 
+```
+:S"*.;
+```
 
-There is one proviso, the NAME S must immediately follow the starting COLON. Other spaces have been left for clarity but are not needed. We can omit all the spaces thus :S"*.;
-
-How do we use this magic definition. Well by the miracle of substitution, everytime the interpreter encounters S it will actually interpret the snippet "*.  (DUP MULT DOT).
+How do we use this magic definition. Well by the miracle of substitution, everytime the interpreter encounters S it will actually interpret the snippet `"*.`  DUP MULT DOT
 
 So we can put any number (up to about 255) onto the stack and immediately have MINT print out its square. Here we have the squares of 4,5,100 and 255 all of which use our newly defined S function
 
