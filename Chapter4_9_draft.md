@@ -24,25 +24,28 @@ _OVER_ This copies the 2nd member of the stack to the top of the stack, leapfrog
 
 So when do we use these stack operations?
 
-We use DUP when we need to use the top item twice. If we put a number on the stack and want to square it (multiply it by itself) we use DUP to make a copy followed by a multiplication *
+We use _DUP_ when we need to use the top item twice. If we put a number on the stack and want to square it (multiply it by itself) we use DUP to make a copy followed by a multiplication *
 ```
-5 " * .   <ENTER>      
+5 " * .   <ENTER>
+00025 
+>      
 ```
 DUPLICATE the 5 on the stack, multiply and print the answer. This is a very simple use case.
 
-We use _DROP_ when there is a value on the top of the stack that we don't need.  We can DROP it and this exposes the 2nd member of the stack.
+We use _DROP_ when there is a value on the top of the stack that we don't need.  We can _DROP_ it and this exposes the 2nd member of the stack.
 
-One example might be when we perform a DIVISION, but we are only interested in the REMAINDER (we are performing a MODULUS operation). We DROP the QUOTIENT from the top of the stack, leaving the REMAINDER for us to use.
+One example might be when we perform a DIVISION, but we are only interested in the REMAINDER (we are performing a MODULUS operation). We _DROP_ the QUOTIENT from the top of the stack, leaving the REMAINDER for us to use.
 ```
-5000 15 / ' .  <ENTER>  
+5000 15 / ' .  <ENTER>
+00005
+>  
 ```
-
 
 This will print the REMAINDER of 5000 divided by 15, which is 00005
 
-SWAP is used to access the 2nd stack member, use it, and then still have the first member remaining on the stack. We will look at SWAP again in Chapter 6 when we look at memory and variables.
+_SWAP_  `$` is used to access the 2nd stack member, operate on it, and then still have the first member remaining on the stack. We will look at _SWAP_ again in Chapter 6 when we look at memory and variables.
 
-In this short chapter we have looked at the stack operations, DUP, DROP, OVER and SWAP.
+In this short chapter we have looked at the stack operations, _DUP_, _DROP_, _SWAP_ and _OVER_.
 
 
 Exercises:
@@ -53,7 +56,7 @@ Put the following numbers on the stack and try out the four basic stack manipula
 1234 5678 9999 1000 <ENTER>
 ```
 
-Now we press `"` for DUP
+Now we press `"` for _DUP_
 
 ```
 > " <ENTER>
@@ -129,7 +132,7 @@ Remember as an infant how you probably played with LEGO, and from a few coloured
 
 Well the MINT USER DEFINITION is like a magic LEGO block, it can be any size, shape or colour you wish, entirely under your control. It will just take a bit of imagination and practice to get used to this new powerful concept.
 
-In the last chapter we  looked at stack manipulations DUP, DROP, OVER and SWAP.
+In the last chapter we  looked at stack manipulations _DUP_, DROP, OVER and SWAP.
 
 I showed a snippet of MINT code DUP MULT DOT, that could be used to print out the SQUARE of a number.  Well we can take this snippet of MINT code and turn it into one of our magic blocks.  
 
