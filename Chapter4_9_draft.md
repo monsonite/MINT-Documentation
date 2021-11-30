@@ -42,33 +42,34 @@ This will print the REMAINDER of 5000 divided by 15, which is 00005
 
 SWAP is used to access the 2nd stack member, use it, and then still have the first member remaining on the stack. We will look at SWAP again in Chapter 6 when we look at memory and variables.
 
-In this short chapter we have looked at the stack operations, DUP, DROP, OVER and Swap
+In this short chapter we have looked at the stack operations, DUP, DROP, OVER and SWAP.
 
 
 Exercises:
 
-Put the following numbers on the stack and try out the four basic stack manipulation operations. Use Control P to view the stack before and after the stack operation.
+Put the following numbers on the stack and try out the four basic stack manipulation operations. Use the Control P key `Ctrl P` to view the stack before and after the stack operation.
 
 ```
 1234 5678 9999 1000 <ENTER>
 ```
 
-DUP
+Now we press `"` for DUP
 
 ```
 > " <ENTER>
 ```
 
 ```
+Ctrl P
 > => 00001 01234 05678 09999 01000 01000    
 ```
 The last item has been DUPLICATED
 
 
-Now use `'` for DROP followed by ENTER. Then use Control P to examine the stack
+Now use `'` for DROP followed by ENTER. Then use `Ctrl P` to examine the stack
 ```
 > ' <ENTER>
-
+Ctrl P
 > => 00001 01234 05678 09999 01000      
 ```
 
@@ -78,16 +79,16 @@ The last item 01000 has been DROPPED
 Now use `%` for OVER and observe the result
 ```
 > % <ENTER>
-
+Ctrl P
 > => 00001 01234 05678 09999 01000 09999   
 ``` 
 
 The 09999 has been copied and leapfrogged the 01000
 
-Finally we will use SWAP $ followed by ENTER
+Finally we will use SWAP `$` followed by `ENTER`
 ```
 > $  <ENTER>
-
+Ctrl P
 > => 00001 01234 05678 09999 09999 01000   
 ```
 
@@ -95,6 +96,9 @@ The 01000 and the 09999 have SWAPPED places.
 
 
 Other, more complex, stack manipulations are possible, but for MINT these are the most commonly used.
+
+
+Remember that we use `Ctrl P` to examine the contents of the stack
 
 
 
@@ -141,14 +145,14 @@ There is one proviso, the NAME S must immediately follow the starting COLON. Oth
 :S"*.;
 ```
 
-How do we use this magic definition. Well by the miracle of substitution, everytime the interpreter encounters S it will actually interpret the snippet `"*.`  DUP MULT DOT
+How do we use this magic definition. Well by the miracle of substitution, everytime the interpreter encounters `S` it will actually interpret the snippet `"*.`  thus executing the sequence DUP MULT DOT
 
 So we can put any number (up to about 255) onto the stack and immediately have MINT print out its square. Here we have the squares of 4,5,100 and 255 all of which use our newly defined S function
 ```
 > :S"*.; <ENTER>
 ```
 ```
-> 4S
+> 4S	 <ENTER>
 00016
 ```
 ```
@@ -196,9 +200,13 @@ Sometimes there are useful pairs of characters that perform a useful function to
 There are cases that we want to ADD or SUBTRACT a small number from a paramater or variable. The following couples form useful commands
 
 `1+`  ADD 1
+
 `1-`  SUBTRACT 1
+
 `2+`  ADD 2
+
 `2-`  SUBTRACT 2
+
 
 
 ```
@@ -237,8 +245,11 @@ In Chapter 3 we introduced basic arithmetic operators, the likes of ADD, SUBTRAC
 We have three:
 
 LESS THAN      LT      `<`
+
 EQUAL TO       EQ      `=`
+
 GREATER THAN   GT      `>`
+
 
 These three operators COMPARE the top two entries on the stack and decide if a COMPARISON is TRUE or FALSE. If TRUE the number `1` is pushed onto the stack. If FALSE `0` is pushed onto the stack. The original parameters are removed from the stack.
 
@@ -265,18 +276,20 @@ This leads us on to the topic of CONDITIONAL EXECUTION.  By this we mean, execut
 
 How do we define the code block to conditionally execute?  We use the familliar PARENTHESES or BRACKETS to enclose the conditional code block. The logical TRUE or FALSE determines whether the code between the brackets will be executed or not.
 
-Here is an example using a pair of strings between back ticks `This will be executed if TRUE`   `This will be executed if FALSE`   
+Here is an example using a pair of strings between back ticks 
+`This will be executed if TRUE`   
+`This will be executed if FALSE`   
 
 ```
 5 4 > (`This will be executed if TRUE`)  <ENTER>
 ```
-This will be executed if TRUE
+`This will be executed if TRUE`
 
 ```
 5 4 < (`This will be executed if FALSE`) <ENTER>
 ```
 
-This will be executed if FALSE
+`This will be executed if FALSE`
 
 
 So as a GENERAL RULE if a code block within PARENTHESES is preceded by 1 it will be condiitionally executed, if it is preceded by 0 it will not be executed. For example you might want to type a comment as follows:
@@ -291,7 +304,7 @@ Do this, OTHERWISE Do that
 
 We use the `\(` to execute the "Do that" function. the `\(` construct forms the command ELSE. For example
 
-(`do this`)\(`do that`)
+`(`do this`)\(`do that`)`
 
 Or in a practical example, put two numbers on the stack  say 55 32  
 ```
@@ -302,9 +315,9 @@ Or in a practical example, put two numbers on the stack  say 55 32
 
 We have looked at conditional code execution based on the condition placed before the parentheses
 
-1(`execute only once`)
+`1(`execute only once`)`
 
-0 ( this will not be executed) 
+`0 (`this will not be executed`) 
 
 But for LOOPS we want thing to execute many times. Fortunately MINT builds upon the conditional code mechanism to build an intuitive LOOP structure.  We just need to increase the value that we place outside of the opening parentheses.
 ```
@@ -337,9 +350,9 @@ Inside the LOOP is a control variable known as the loop variable `i`. In the abo
 
 ```
 
-i is the loop variable which increments each time around the loop until it reaches the specified value, at which point the loop terminates.
+`i` is the loop variable which increments each time around the loop until it reaches the specified value, at which point the loop terminates.
 
-The construct `\i@` is a means to push the i variable onto the stack and `\i@.` will print it out for each iteration around the loop.  We will cover variables more in the next chapter.
+The construct `\i@` is a means to push the `i` variable onto the stack and `\i@.` will print it out for each iteration around the loop.  We will cover variables more in the next chapter.
 
 We can create a very long loop, with up to 65525 iterations:
 ```
@@ -348,7 +361,7 @@ We can create a very long loop, with up to 65525 iterations:
 
 This will print out all the decimal numbers between 0 and 65534 and will take many seconds to complete depending on the baud rate of your serial terminal interface.
 
-Loops can be nested to create even longer structures:
+Loops can be _NESTED_ create even longer structures:
 ```
 1000(1000())`done`  <ENTER>
 ```
@@ -387,7 +400,7 @@ In the last chapter we looked at comparison operators, conditional execution and
 
 In MINT, a VARIABLE is a fixed location in memory where we can store a 16-bit number and retrieve it easily.
 
-By way of convention, USER VARIABLES are defined by a single lower case alpha character. There are 26 of these, a to z.
+By way of convention, USER VARIABLES are defined by a single lower case alpha character. There are 26 of these, `a` to `z`.
 
 There are really only 3 things we can do with a variable:
 
@@ -433,24 +446,24 @@ Remember that we have 26 user variables `a` through to `z`.
 
 More quick ways to use VARIABLES
 
-`1234 a!` 			; Store 1234 in the variable `a`
+`1234 a!` 			Store 1234 in the variable `a`
 
-`5678 b!` 			; Store 5678 in the variable `b`
+`5678 b!` 			Store 5678 in the variable `b`
 
-`b@ .` 				; print the value stored in `b`
+`b@ .` 				Print the value stored in `b`
 
-`a@ b@ + .` 		; Add the contents of `a` to `b` and print the sum
+`a@ b@ + .` 		Add the contents of `a` to `b` and print the sum
 
-`a@ b!` 			; Copy the contents of `a` into `b`
+`a@ b!` 			Copy the contents of `a` into `b`
 
-`1a@ 1+ 1a!`		; Fetch the value in `a`, INCREMENT by 1 and store back in `a`
+`1a@ 1+ 1a!`		Fetch the value in `a`, INCREMENT by 1 and store back in `a`
 
 
 Variables are located at FIXED addresses and that address is defined by the lowercase letter we choose.
 
 The stack can be used for temporary data but variables are for more long term storage.  MINT is like a microprocessor with 26 registers, and we can choose which ones we wish to use.
 
-VARIABLES give immense flexibility, and avoid us using tricky operations on the stack. For example we can read from `a` and copy to `b`
+VARIABLES give immense flexibility, and avoid us having to use a lot of tricky operations on the stack. For example we can read from `a` and copy to `b`
 
 `a@ b!`
 
@@ -462,9 +475,9 @@ Or we can read `b` ADD 2 and store back to `b`
 
 
 
-In the next example we will combine VARIABLES and ADDITION within a LOOP to create the well known Fibonacci Sequence.
+In the next example we will combine VARIABLES and ADDITION within a LOOP to create the well known _Fibonacci Sequence_.
 
-The sequence starts with 0 and then 1, and continues by adding the previous two terms together to create the next term. So the sequence 0 1 1 2 3 5 8 13 21 34 and so on is created. The sequence rapidly reaches a high value, so with 16-bit arithmetic it will rapidly approach the maximum number that can be handled.
+The sequence starts with 0 and then 1, and continues by adding the previous two terms together to create the next term. So the sequence `0  1  1  2  3  5  8  13  21  34` and so on is created. The sequence rapidly reaches a high value, so with 16-bit arithmetic it will rapidly approach the maximum number that can be handled.
 
 To create a MINT program that will generate the sequence we first initialise a couple of variables `a` and `b` to 0 and 1 respectively and print them out:
 ```
@@ -491,11 +504,11 @@ Alternatively we could use
 
 The Fibonacci sequence in just 37 instructions.
 
-The Fibonacci sequence may also be generated using clever stack manipulation only. Can you thinkof a way how to do this?
+The Fibonacci sequence may also be generated using clever stack manipulation only. Can you think of a way how to do this?
 
 
 
-In this chapter we have learned the FETCH and STORE operations used to access variables stored in RAM
+In this chapter we have learned the FETCH `@` and STORE `!` operations used to access variables stored in RAM
 
 
 ### Memory and Variable Operations
@@ -544,7 +557,7 @@ Having defined an array, we need to create some code to read and write to the in
 
 It should be remembered that the first member is actually the zeroth!
 
-If we type H ENTER, the array will be initialised and the elements will be stored in consecutive bytes in memory. 
+If we type `H ENTER` the array will be initialised and the elements will be stored in consecutive bytes in memory. 
 
 We know that our variable a, acts as a pointer to the address in RAM where the start of the array begins.
 
