@@ -34,7 +34,7 @@ For example, if you want to add two numbers you just type the following at the t
 
 `123 456 + .`
 
-The DOT `.` is a shorthand character to instruct the MINT interpreter to print the result on the top of the stack to the screen.	
+The numbers `123` then `456` are placed onto the STACK. The `+` command ADDs them together and leaves their sum as a result on the top of the stack. The DOT `.` is a shorthand character to instruct the MINT interpreter to print the result on the top of the stack to the terminal screen.	
 
 When you hit `<ENTER>` the result will be displayed thus
 ```
@@ -49,7 +49,8 @@ Decimal numbers between 0 and 65535 are accepted, and printout is always in the 
 
 ### Printing Text
 
-Most computer languages are demonstrated by printing the text string `Hello World` on the terminal display. MINT is no exception, and it is very simple to print text to the screen.  Anything enclosed between back ticks ` ` ` will be printed
+Most computer languages are demonstrated by printing the text string `Hello World` on the terminal display. MINT is no exception, and it is very simple to print text to the screen.  Anything enclosed between back ticks ``text`` will be printed
+`\N` is the way in which we send a _NEWLINE_ character to the terminal.
 
 ```
 `Hello World` \N   <ENTER>
