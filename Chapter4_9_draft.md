@@ -8,33 +8,33 @@ Using a stack is a powerful concept, it has its origins in the 1920s and further
 
 The stack has a few operations that help us to keep it in order, and in this chapter we will be looking at the stack manipulation commands.  MINT uses 4 basic stack manipulation commands and they are essential for efficient use of the language.
 
-Think of them as housekeeping for the stack - helping tp keep everything tidy and in the correct order prior to the calculation or other operation.
+Think of them as housekeeping for the stack - helping to keep everything tidy and in the correct order prior to the calculation or other operation.
 
-The four basic commands are DUP, DROP, SWAP and OVER:
+The four basic commands are _DUP_, _DROP_, _SWAP_ and _OVER_:
 
-DUP  Duplicate the top member of the stack, in mint we use the command " which suggests we have two identical items on the stack
+_DUP_  Duplicate the top member of the stack, in mint we use the command `"` which suggests we have two identical items on the stack
 
-DROP Throw away the top member of the stack exposing the 2nd member.  We use the single quote character ' to represent DROPPED
+_DROP_ Throw away the top member of the stack exposing the 2nd member.  We use the single quote character `'` to represent DROPPED
 
-SWAP This swaps the top two members of the stack, it allows us to access the 2nd member for some purpose, and the access the top member.  SWAP is given the $ character, which looks a bit like an S for SWAP
+_SWAP_ This swaps the top two members of the stack, it allows us to access the 2nd member for some purpose, and the access the top member.  SWAP is given the `$` character, which looks a bit like an S for SWAP
 
-OVER This copies the 2nd member of the stack to the top of the stack, leapfrogging the previous top member.  In MINT we use % to represent OVER. It suggests o being copied and jumping over the / to appear as the new top of the stack, giving us o / o
+_OVER_ This copies the 2nd member of the stack to the top of the stack, leapfrogging the previous top member.  In MINT we use `%` to represent OVER. It suggests o being copied and jumping over the / to appear as the new top of the stack, giving us o / o
 
 
 
 So when do we use these stack operations?
 
-We use DUP when we need to use the top item twice. If we put a number on the stack and want to square it (multiply it by itself) we use DUP to make a copy followed by a multiplication
+We use DUP when we need to use the top item twice. If we put a number on the stack and want to square it (multiply it by itself) we use DUP to make a copy followed by a multiplication *
 
 5 " * .      DUPLICATE the 5 on the stack, multiply and print the answer. This is a very simple use case.
 
-We use DROP when there is a value on the top of the stack that we don't need.  We can DROP it and this exposes the 2nd member of the stack.
+We use _DROP_ when there is a value on the top of the stack that we don't need.  We can DROP it and this exposes the 2nd member of the stack.
 
 One example might be when we perform a DIVISION, but we are only interested in the REMAINDER (we are performing a MODULUS operation). We DROP the QUOTIENT from the top of the stack, leaving the REMAINDER for us to use.
+```
+5000 15 / ' .  <ENTER>  ```This will print the REMAINDER of 5000 divided by 15, which is 00005
 
-5000 15 / ' .    This will print the REMAINDER of 5000 divided by 15, which is 00005
-
-SWAP is ideal to access the 2nd stack member, use it and then still have the first member remaining on the stack. We will look at SWAP again in Chapter 6 when we look at memory and variables.
+SWAP is used to access the 2nd stack member, use it, and then still have the first member remaining on the stack. We will look at SWAP again in Chapter 6 when we look at memory and variables.
 
 In this short chapter we have looked at the stack operations, DUP, DROP, OVER and Swap
 
@@ -43,32 +43,36 @@ Exercises:
 
 Put the following numbers on the stack and try out the four basic stack manipulation operations. Use Control P to view the stack before and after the stack operation.
 
-
-1234 5678 9999 1000
+```
+1234 5678 9999 1000 <ENTER>
+```
 
 DUP
 
-> "
+```
+> " <ENTER>
+```
 
-> => 00001 01234 05678 09999 01000 01000    The last item has been DUPLICATED
-
-
-Now use ' for DROP followed by ENTER. Then use Control P to examine the stack
-
-> '
-
-> => 00001 01234 05678 09999 01000      The last item 01000 has been DROPPED
+```
+> => 00001 01234 05678 09999 01000 01000    ```The last item has been DUPLICATED
 
 
-Now use % for OVER and observe the result
+Now use `'` for DROP followed by ENTER. Then use Control P to examine the stack
+```
+> ' <ENTER>
 
-> %
+> => 00001 01234 05678 09999 01000      ```The last item 01000 has been DROPPED
 
-> => 00001 01234 05678 09999 01000 09999   The 09999 has been copied and leapfrogged the 01000
+
+Now use `%` for OVER and observe the result
+```
+> % <ENTER>
+
+> => 00001 01234 05678 09999 01000 09999   ``` The 09999 has been copied and leapfrogged the 01000
 
 Finally we will use SWAP $ followed by ENTER
-
-> $
+```
+> $  <ENTER>
 
 > => 00001 01234 05678 09999 09999 01000   The 01000 and the 09999 have SWAPPED places.
 
