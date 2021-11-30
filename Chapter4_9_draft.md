@@ -10,15 +10,17 @@ The stack has a few operations that help us to keep it in order, and in this cha
 
 Think of them as housekeeping for the stack - helping tp keep everything tidy and in the correct order prior to the calculation or other operation.
 
-The four basic commands are DUP, DROP, OVER and SWAP:
+The four basic commands are DUP, DROP, SWAP and OVER:
 
 DUP  Duplicate the top member of the stack, in mint we use the command " which suggests we have two identical items on the stack
 
-DROP Throw away the top member of the stack exposing the 2nd member.  We use the single quote character ' to represent DROP
+DROP Throw away the top member of the stack exposing the 2nd member.  We use the single quote character ' to represent DROPPED
+
+SWAP This swaps the top two members of the stack, it allows us to access the 2nd member for some purpose, and the access the top member.  SWAP is given the $ character, which looks a bit like an S for SWAP
 
 OVER This copies the 2nd member of the stack to the top of the stack, leapfrogging the previous top member.  In MINT we use % to represent OVER. It suggests o being copied and jumping over the / to appear as the new top of the stack, giving us o / o
 
-SWAP This swaps the top two members of the stack, it allows us to access the 2nd member for some purpose, and the access the top member.  SWAP is given the $ character, which looks a bit like an S for SWAP
+
 
 So when do we use these stack operations?
 
@@ -136,7 +138,7 @@ Between the COLON and the SEMICOLON you may enter virtually any legitimate seque
 
 Here are a few examples:
 
-:W`Hello World ` \N;    This prints the string Hellow World that is contained between the back ticks and ads a NEWLINE  character at the end using \N
+:W`Hello World ` \N;    This prints the string Hello World that is contained between the back ticks and ads a NEWLINE  character at the end using \N
 
 If you type W four times it will print Hello World 4 times
 
@@ -176,8 +178,8 @@ In the next two chapters we will introduce more of the language, including condi
 
 | Symbol | Description                | Effect |
 | ------ | -------------------------- | ------ |
-| :      | define a new word DEF      | "C"     |
-| ;      | end of user definition END |         |
+| :      | define a new word DEF      | "C"    |
+| ;      | end of user definition END |        |
 
 
 # Chapter 6
@@ -274,7 +276,7 @@ Inside the LOOP is a control variable known as the loop variable i. In the above
 
 >
 
-i is the loop variable which decrements each time around the loop until it reaches zero, at which point the loop terminates.
+i is the loop variable which increments each time around the loop until it reaches the specified value, at which point the loop terminates.
 
 The construct \i@ is a means to push the i variable onto the stack and \i@. will print it out for each iteration around the loop.  We will cover variables more in the next chapter.
 
