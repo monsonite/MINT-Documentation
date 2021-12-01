@@ -8,7 +8,7 @@ This chapter is only intended as a _Quick Start Guide_. The topics raised in thi
 
 MINT is a tiny, text based, interpreted language inspired by Forth.
 
-On the Z80 it can be implemented in fewer than 1600 bytes of machine code and it is relatively quick compared to other interpreted languages.
+On the Z80 it can be implemented in fewer than 1700 bytes of machine code and it is relatively quick compared to other interpreted languages.
 
 MINT is a form of shorthand.  It uses plain text and printable characters, so it can be written and edited using any text editor, using the text editor facilities for file storage.
 
