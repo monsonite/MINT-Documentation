@@ -63,7 +63,7 @@ When you hit `<ENTER>` the result will be displayed thus
 >
 ```
 
-This `>` is the cursor-prompt that confirms that the code has been executed and control has been passed back to the User.
+The `>` is the cursor-prompt that confirms that the code has been executed and control has been passed back to the User.
 
 MINT defaults to using DECIMAL arithmetic, but HEXADECIMAL (BASE 16) is also available. More about this in Chapter 3.
 
@@ -88,9 +88,11 @@ In Chapter 1 we introduced the absolute basics of the MINT interpreter with a co
 
 This chapter will further explore the MINT interpreter introducing the basic concepts and how the MINT interpreter works.
 
-Chapters 3 to 9 will introduce the basic language a few commands at a time. Chapter 10 will introduce the extended language commands.
+Chapters 3 to 9 will introduce the basic language a few commands at a time. Each chapter includes code examples that illustrate the use of the language.
 
-At the end of this document is a Glossary of all the commands used in MINT. Each chapter has an excerpt from the Glossary to summarise the commands that h=ave been discussed in that chapter.
+Chapter 10 will introduce the extended language commands.
+
+At the end of this document is a Glossary of all the commands used in MINT. Each chapter has an excerpt from the Glossary to summarise the commands that have been discussed in that chapter.
 
 Like other small interpreted languages, the intention of MINT is to create a 16-bit virtual machine by combining the mostly 8-bit operations available on the Z80, to provide 16-bit integer arithmetic and variable handling.
 
