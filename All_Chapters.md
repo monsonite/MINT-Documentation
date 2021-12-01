@@ -6,13 +6,33 @@ This chapter is only intended as a _Quick Start Guide_. The topics raised in thi
 
 ### What is MINT ?
 
-MINT is a tiny, stack based language inspired by Forth.
+MINT is a tiny, text based, interpreted language inspired by Forth.
 
 On the Z80 it can be implemented in fewer than 1600 bytes of machine code and it is relatively quick compared to other interpreted languages.
 
-MINT is a form of shorthand. It uses a variety of familiar characters such as `+ - *` and `/` to implement arithmetical and logical operations. In total, MINT has about 30 basic instructions consisting of single, printable ascii characters.
+MINT is a form of shorthand.  It uses plain text and printable characters, so it can be written and edited using any text editor, using the text editor facilities for file storage.
 
-These characters will be shown in pale blue highlight to distinguish them from other text.
+Moreover, because the MINT source is just plain text, phrases or even complete programs written in MINT can be cut from the text editor and pasted into the MINT interpreter using a serial terminal application, such as Putty, Tera Term or similar.
+
+As MINT is an interpreted language, there is no compilation required and the source code is executed directly.
+
+Here is an example of MINT source code, which prints out the Fibonacci Sequence.
+
+:F(a@b@+c!b@a!c@b!c@.);
+0a! 1b! a@. b@. 23F
+
+Once this text is pasted to the target hardware, on pressing the <ENTER> key it will be executed immediately, printing out the familiar Fibonacci Sequence like so:
+
+00000 00001 00001 00002 00003 00005 00008 00013 00021 00034 00055 00089 00144 00233 00377 00610 00987 01597 02584 04181 06765 10946 17711 28657 46368
+>
+
+MINT is a compact language, like shorthand, but for clarity it is possible to include extra spaces to make the source more readable. The first line of the Fibonacci definition coulld be rewritten as:
+
+:F (a@ b@ + c! b@ a! c@ b! c@ . ) ;
+
+As you can see, MINT uses a variety of familiar characters such as `+ - *` and `/` to implement arithmetical and logical operations, plus alpha-numerical characters, punctuation marks and other symbols. In total, MINT has about 30 basic instructions consisting of single, printable ascii characters.
+
+For the purpose of this document, these characters will be shown in pale blue highlight to distinguish them from other text.
 
 The characters will be introduced over the next 8 chapters a few at a time.
 
