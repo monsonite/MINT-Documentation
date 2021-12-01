@@ -8,6 +8,17 @@ Print out the top element of the stack as 8-bit binary number
 
 :A b! 8(128 b@ & 128 = G b@ { b!) \N;		A produces a row of chunky pixels followed by NEWLINE
 
-\N #FE A #81 A #81 A #81 A #FE A #81 A #81 A #81 A #FE A    Prints letter B
+\N #7E A #81 A #81 A #81 A #FF A #81 A #81 A #81 A    Prints letter A
 
-\N #7E A #81 A #80 A #80 A #80 A #80 A #80 A #81 A #7E A    Prints letter C
+\N #FE A #81 A #81 A #FE A #81 A #81 A #81 A #FE A    Prints letter B
+
+\N #7E A #80 A #80 A #80 A #80 A #80 A #81 A #7E A    Prints letter C
+
+
+Cut and paste this  into terminal to print A B C
+
+:G"(219 \E)0=(32 \E);
+:A b! 8(128 b@ & 128 = G b@ { b!) \N;
+\N #7E A #81 A #81 A #81 A #FF A #81 A #81 A #81 A 
+\N #FE A #81 A #81 A #FE A #81 A #81 A #81 A #FE A
+\N #7E A #81 A #80 A #80 A #80 A #80 A #81 A #7E A
