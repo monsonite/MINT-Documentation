@@ -1,0 +1,7 @@
+Print out the top element of the stack as 8-bit binary number
+
+:C"(`1`)0=(`0`);         					C prints out either 1 or 0}}
+
+:B b! 8(128 b@ & 128 = C b@ { b!);          B tests each bit in turn and prints out 1 or 0 accordingly
+
+:G"(219 \E)0=(32 \E);						G emits either whitespace or blackspace (for chunky graphics).
