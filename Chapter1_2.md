@@ -84,7 +84,7 @@ In the Chapter 1 example above
 123 456 + .	<ENTER>
 ```
 
-The numerical strings `123` and `456` are evaluated as 16-bit binary numbers and placed on the data stack. The plus symbol `+` is interpreted as a jump to the routine that performs a 16-bit addition of the top two elements on the data stack, placing their sum on the top of the datastack. The dot character prints out the top value of the data stack, consuming it at the same time.
+The numerical strings `123` and `456` are evaluated as 16-bit binary numbers and placed on the data stack. The plus symbol `+` is interpreted as a jump to the routine that performs a 16-bit addition of the top two elements on the data stack, placing their sum on the top of the data stack. The dot character prints out the top value of the data stack, consuming it at the same time.
 
 In addition to the arithmetic and boolean operations, there are also the three comparison operators:
 
@@ -147,7 +147,7 @@ See the User Manual pages 45 and 46 on how this is done
 
 https://smallcomputercentral.files.wordpress.com/2018/05/scmon-v1-0-userguide-e1-0-0.pdf
 
-MINT was assembled using asm80.com, an online 8-bit assembler. It will generate an Intel Hex file that can be pasted into RAM at addresss $8000 using a serial terminal program. I use TeraTerm when working within the windows environment.
+MINT was assembled using asm80.com, an online 8-bit assembler. It will generate an Intel Hex file that can be pasted into RAM at address $8000 using a serial terminal program. I use TeraTerm when working within the windows environment.
 
 Once the MINT code image is pasted into RAM you can run it using the Go command "G8000"
 
