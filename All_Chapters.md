@@ -10,7 +10,7 @@ MINT is a tiny, text based, interpreted language inspired by Forth.
 
 On the Z80 it can be implemented in fewer than 1700 bytes of machine code and it is relatively quick compared to other interpreted languages.
 
-MINT is a form of shorthand.  It uses plain text and printable characters, so it can be written and edited using any text editor, using the text editor facilities for file storage.
+MINT is a form of shorthand. It uses plain text and printable characters, so it can be written and edited using any text editor, using the text editor facilities for file storage.
 
 Moreover, because the MINT source is just plain text, phrases or even complete programs written in MINT can be cut from the text editor and pasted into the MINT interpreter using a serial terminal application, such as Putty, Tera Term or similar.
 
@@ -24,6 +24,7 @@ Here is an example of MINT source code, which prints out the Fibonacci Sequence.
 Once this text is pasted to the target hardware, on pressing the <ENTER> key it will be executed immediately, printing out the familiar Fibonacci Sequence like so:
 
 00000 00001 00001 00002 00003 00005 00008 00013 00021 00034 00055 00089 00144 00233 00377 00610 00987 01597 02584 04181 06765 10946 17711 28657 46368
+
 >
 
 MINT is a compact language, like shorthand, but for clarity it is possible to include extra spaces to make the source more readable. The first line of the Fibonacci definition coulld be rewritten as:
@@ -1207,8 +1208,8 @@ There are roughly 30 punctuation and arithmetical symbols available in the print
 | }      | shift the number to the right (2/)        | a -- b   |
 | \\b    | base 16 flag variable                     | -- a     |
 | \\\_   | sign of number                            | n -- b   |
-| \\M    | maximum                                   | a b -- m |
-| \\m    | minimum                                   | a b -- m |
+| \\M    | most                                      | a b -- m |
+| \\L    | least                                     | a b -- m |
 
 ### Logical Operators
 
@@ -1284,22 +1285,22 @@ NOTE: "C" is an uppercase letter immediately following opcode which is the name 
 
 ### Constants
 
-| Symbol | Description                 | Effect |
-| ------ | --------------------------- | ------ |
-| \\0    | data stack start address    | -- adr |
-| \\1    | text input buffer address   | -- adr |
-| \\2    | defs address                | -- adr |
-| \\3    | vars address                | -- adr |
-| \\4    | opcodes address             | -- adr |
-| \\5    | macros address              | -- adr |
-| \\6    | user vars                   | -- adr |
-| \\7    | -                           | -- adr |
+| Symbol | Description               | Effect |
+| ------ | ------------------------- | ------ |
+| \\0    | data stack start address  | -- adr |
+| \\1    | text input buffer address | -- adr |
+| \\2    | defs address              | -- adr |
+| \\3    | vars address              | -- adr |
+| \\4    | opcodes address           | -- adr |
+| \\5    | macros address            | -- adr |
+| \\6    | user vars                 | -- adr |
+| \\7    | -                         | -- adr |
 
 ### Variables
 
-| \\b    | base16 flag variable                        | -- adr        |
-| \\c    | text input buffer pointer variable          | -- adr        |
-| \\h    | heap pointer variable                       | -- adr        |
+| \\b | base16 flag variable | -- adr |
+| \\c | text input buffer pointer variable | -- adr |
+| \\h | heap pointer variable | -- adr |
 
 ### Miscellaneous
 
