@@ -53,23 +53,21 @@ Note: logical NOT can be achieved with 0=
 | .      | print the top member of the stack as a decimal number DOT | a --        |
 | ,      | print the number on the stack as a hexadecimal            | a --        |
 | \`     | \`Everything between ticks is printed as a string\`       | --          |
-| \\p    | non-destructively prints stack                            | --          |
-| \\e    | emits a char to output                                    | val --      |
-| \\I    | input from a I/O port                                     | port -- val |
-| \\k    | read a char from input                                    | -- val      |
-| \\n    | prints a newline to output                                | --          |
-| \\O    | output to an I/O port                                     | val port -- |
 | \\$    | text input pointer variable                               | -- adr      |
-| \\t    | print a string                                            | adr len --  |** TODO **
+| \\E    | emits a char to output                                    | val --      |
+| \\I    | input from a I/O port                                     | port -- val |
+| \\K    | read a char from input                                    | -- val      |
+| \\N    | prints a CRLF to output                                   | --          |
+| \\O    | output to an I/O port                                     | val port -- |
+| \\P    | non-destructively prints stack                            | --          |
+| \\Z    | print definition by number                                | n --        |
 
 ### User Definitions
 
 | Symbol | Description                | Effect |
 | ------ | -------------------------- | ------ |
-| :      | define a new word DEF      | "C"     |
-| ;      | end of user definition END |         |
-| \\:    | start defining a macro     | "C" -- |
-| \\E    | edit a definition          | "C" --  | ** TODO **
+| :      | define a new word DEF      | "C"    |
+| ;      | end of user definition END |        |
 
 NOTE: "C" is an uppercase letter immediately following opcode which is the name of the definition
 
@@ -77,31 +75,29 @@ NOTE: "C" is an uppercase letter immediately following opcode which is the name 
 
 | Symbol | Description                                       | Effect |
 | ------ | ------------------------------------------------- | ------ |
-| (      | BEGIN a loop or conditionally executed code block | --     |
+| (      | BEGIN a loop or conditionally executed code block | n --   |
 | )      | END a loop or conditionally executed code block   | --     |
+| \\(    | Execute if false, preserves condition             | n -- n |
 | \\i    | returns index variable of current loop            | -- val |
 | \\j    | returns index variable of outer loop              | -- val |
-| \\w    | if false then skip to end of loop                 | b --   |
+| \\W    | if false then skip to end of loop                 | b --   |
 
 ### Memory and Variable Operations
 
-| Symbol | Description                                 | Effect         |
-| ------ | ------------------------------------------- | -------------- |
-| @      | FETCH a value from memory                   | -- val         |
-| !      | STORE a value to memory                     | val adr --     |
-| \\+    | increments variable at address by an amount | val addr --    |
-| \\-    | decrements variable at address by an amount | val addr --    |
-| \\@    | FETCH a byte from memory                    | -- val         |
-| \\!    | STORE a byte to memory                      | val adr --     |
-| [      | begin an array definition                   | --             |
-| ]      | end an array definition                     | -- adr nwords  |
-| \\[    | begin a byte array definition               | --             |** TODO **
-| \\]    | end a byte array definition                 | -- adr nbytes  |** TODO **
-| \\\`   | define a string                             | -- adr nchars  |
-| \\h    | heap pointer variable                       | -- adr         |
-| \\$    | text input buffer pointer variable          | -- adr         |
-| \\b    | base16 flag variable                        | -- adr         |
-| \\u    | user var                                    | n -- adr       |** TODO **
+| Symbol | Description                                 | Effect        |
+| ------ | ------------------------------------------- | ------------- |
+| @      | FETCH a value from memory                   | -- val        |
+| !      | STORE a value to memory                     | val adr --    |
+| \\+    | increments variable at address by an amount | val adr --    |
+| \\-    | decrements variable at address by an amount | val adr --    |
+| \\@    | FETCH a byte from memory                    | -- val        |
+| \\!    | STORE a byte to memory                      | val adr --    |
+| [      | begin an array definition                   | --            |
+| ]      | end an array definition                     | -- adr nwords |
+| \\[    | begin a byte array definition               | --            |
+| \\h    | heap pointer variable                       | -- adr        |
+| \\$    | text input buffer pointer variable          | -- adr        |
+| \\B    | base16 flag variable                        | -- adr        |
 
 ### Constants and variables
 
@@ -111,8 +107,8 @@ NOTE: "C" is an uppercase letter immediately following opcode which is the name 
 | \\1    | text input buffer address   | -- adr |
 | \\2    | defs address                | -- adr |
 | \\3    | vars address                | -- adr |
-| \\4    | macros address              | -- adr |
-| \\5    | user vars                   | -- adr |
+| \\4    | user vars address           | -- adr |
+| \\5    | macros address              | -- adr |
 | \\6    |                             | -- adr |
 | \\7    |                             | -- adr |
 | \\8    |                             | -- adr |
@@ -120,18 +116,19 @@ NOTE: "C" is an uppercase letter immediately following opcode which is the name 
 
 ### Miscellaneous
 
-| Symbol | Description                                   | Effect    |
-| ------ | --------------------------------------------- | --------- |
-| \\\\   | comment text, skips reading until end of line | --        |
-| \\g    | execute mint code at address                  | addr -- ? |
-| \\q    | quits from Mint interpreter                   | --        |
-| \\x    | execute machine code at address               | addr -- ? |
+| Symbol | Description                                   | Effect   |
+| ------ | --------------------------------------------- | -------- |
+| \\\\   | comment text, skips reading until end of line | --       |
+| \\G    | execute mint code at address                  | adr -- ? |
+| \\Q    | quits from Mint interpreter                   | --       |
+| \\X    | execute machine code at address               | adr -- ? |
 
-### Macros
+### Control keys
 
 | Symbol | Description                     |
 | ------ | ------------------------------- |
-| ^[     | escape clears the line          |
 | ^B     | toggle base decimal/hexadecimal |
+| ^E     | edit a definition               |
 | ^H     | backspace                       |
+| ^L     | list definitions                |
 | ^P     | print stack                     |
