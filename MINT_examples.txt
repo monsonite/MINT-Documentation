@@ -15,10 +15,24 @@ Print out the top element of the stack as 8-bit binary number
 \N #7E A #80 A #80 A #80 A #80 A #80 A #81 A #7E A    Prints letter C
 
 
-Cut and paste this  into terminal to print A B C
+Cut and paste this code into terminal to print chunky A B C
 
 :G"(219 \E)0=(32 \E);
 :A b! 8(128 b@ & 128 = G b@ { b!) \N;
-\N #7E A #81 A #81 A #81 A #FF A #81 A #81 A #81 A 
-\N #FE A #81 A #81 A #FE A #81 A #81 A #81 A #FE A
-\N #7E A #81 A #80 A #80 A #80 A #80 A #81 A #7E A
+\N #7E A #81 A #81 A #FF A #81 A #81 A #81 A #00 A 
+\N #FE A #81 A #81 A #FE A #81 A #81 A #FE A #00 A
+\N #7E A #81 A #80 A #80 A #80 A #81 A #7E A #00 A
+
+
+\N #7E A #81 A #81 A #FF A #81 A #81 A #81 A #00 A #FE A #81 A #81 A #FE A #81 A #81 A #FE A #00 A  #7E A #81 A #80 A #80 A #80 A #81 A #7E A #00 A
+
+:E b! 3(4 b@ & 4 = G b@ { b!) \N;        This is a 3x5 font  only numbers 0 to 7 are needed 
+
+7E 4E 6E 4E 7E     Print an E
+
+7E 5E 4E 5E 7E     Print a C
+
+3E 5E 4E 5E 3E 
+
+7E 5E 6E 5E 7E    Print a B
+
