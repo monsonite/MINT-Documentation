@@ -23,6 +23,37 @@ Cut and paste this code into terminal to print chunky A B C
 \N #FE A #81 A #81 A #FE A #81 A #81 A #FE A #00 A
 \N #7E A #81 A #80 A #80 A #80 A #81 A #7E A #00 A
 
+"BANANA BANDANA"  - a fun banner to print out on a terminal in chunky, 8x8 block graphics
+
+First store the pixel patterns for  12 upper case alpha characters in byte arrays, define words G and P.
+G prints out either a space (black) or an inverse space (white) character
+P addresses the 8 bytes of the chosen array in turn and uses G to print a character 
+
+\[#7E #81 #81 #FF #81 #81 #81 #00 ]  $a!   
+\[#FE #81 #81 #FE #81 #81 #FE #00 ]  $b!
+\[#7E #81 #80 #80 #80 #81 #7E #00 ]  $c!
+\[#FE #81 #81 #81 #81 #81 #FE #00 ]  $d!
+\[#FC #80 #80 #F8 #80 #80 #FC #00 ]  $e!
+\[#FC #80 #80 #F8 #80 #80 #80 #00 ]  $f!
+\[#FE #10 #10 #10 #10 #10 #FE #00 ]  $i!
+\[#3C #42 #20 #18 #04 #42 #3C #00 ]  $s!
+\[#FE #10 #10 #10 #10 #10 #10 #00 ]  $t!
+\[#C3 #A5 #99 #81 #81 #81 #81 #00 ]  $m!  
+\[#C1 #A1 #91 #89 #85 #83 #81 #00 ]  $n!
+\[#00 #00 #00 #00 #00 #00 #00 #00 ]  $\s! 
+
+:G"(219 \E)0=(32 \E);
+:P @+\@ z! 8(128 z@ & 128 = G z@ { z!) 32 \E;
+:M """mPiPnPtP\N;
+:K """""""""""""bPaPnPaPnPaP\sPbPaPnPdPaPnPaP\N;
+:B 8(\i@K);
+:C 8(\i@M); 
+C
+B
+
+
+
+
 
 \N #7E A #81 A #81 A #FF A #81 A #81 A #81 A #00 A #FE A #81 A #81 A #FE A #81 A #81 A #FE A #00 A  #7E A #81 A #80 A #80 A #80 A #81 A #7E A #00 A
 
