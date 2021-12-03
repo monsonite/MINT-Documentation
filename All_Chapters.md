@@ -1225,12 +1225,13 @@ Note: logical NOT can be achieved with 0=
 
 ### Stack Operations
 
-| Symbol | Description                                                                   | Effect       |
-| ------ | ----------------------------------------------------------------------------- | ------------ |
-| "      | duplicate the top member of the stack DUP                                     | a -- a a     |
-| '      | drop the top member of the stack DROP                                         | a a -- a     |
-| $      | swap the top 2 members of the stack SWAP                                      | a b -- b a   |
-| %      | over - take the 2nd member of the stack and copy it onto the top of the stack | a b -- a b a |
+| Symbol | Description                                                                   | Effect         |
+| ------ | ----------------------------------------------------------------------------- | -------------- |
+| "      | duplicate the top member of the stack DUP                                     | a -- a a       |
+| '      | drop the top member of the stack DROP                                         | a a -- a       |
+| $      | swap the top 2 members of the stack SWAP                                      | a b -- b a     |
+| %      | over - take the 2nd member of the stack and copy it onto the top of the stack | a b -- a b a   |
+| \\R    | rotate the top 2 members of the stack ROT                                     | a b c -- b c a |
 
 ### Input & Output Operations
 
@@ -1253,10 +1254,11 @@ Note: logical NOT can be achieved with 0=
 
 | Symbol | Description                | Effect |
 | ------ | -------------------------- | ------ |
-| :      | define a new word DEF      | "C"    |
+| :č     | define a new word DEF      |        |
 | ;      | end of user definition END |        |
+| ?č     | get the address of the def | -- adr |
 
-NOTE: "C" is an uppercase letter immediately following opcode which is the name of the definition
+NOTE: "č" is an uppercase letter immediately following opcode which is the name of the definition
 
 ### Loops and conditional execution
 
@@ -1276,7 +1278,6 @@ NOTE: "C" is an uppercase letter immediately following opcode which is the name 
 | @      | FETCH a value from memory                   | -- val        |
 | !      | STORE a value to memory                     | val adr --    |
 | \\+    | increments variable at address by an amount | val adr --    |
-| \\-    | decrements variable at address by an amount | val adr --    |
 | \\@    | FETCH a byte from memory                    | -- val        |
 | \\!    | STORE a byte to memory                      | val adr --    |
 | [      | begin an array definition                   | --            |
@@ -1319,4 +1320,3 @@ NOTE: "C" is an uppercase letter immediately following opcode which is the name 
 | ^E     | edit a definition               |
 | ^H     | backspace                       |
 | ^L     | list definitions                |
-| ^P     | print stack                     |
