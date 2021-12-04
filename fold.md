@@ -34,7 +34,7 @@ Count the numbers in an array.
 
 ```
 > 0 [1 4 3 6 2] ?C F
-> 5
+5
 ```
 
 ### Most
@@ -47,7 +47,7 @@ Find the maximum number in an array.
 
 ```
 > 0 [1 4 3 6 2] ?M F
-> 6
+6
 ```
 
 ### Least
