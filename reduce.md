@@ -60,8 +60,8 @@ Find the maximum number in an array.
 Find the minimum number in an array.
 
 ```
-> 0 [1 4 3 6 2] ?L R
-2
+> 1 [1 4 3 6 2] ?L R
+1
 ```
 
 ### Sum
@@ -75,4 +75,17 @@ Sum of the numbers in an array.
 ```
 > 0 [1 4 3 6 2] ?S R
 16
+```
+
+### Hash
+
+```
+:H1+^;
+```
+
+Hash of the numbers in an array.
+
+```
+> 0 [1 4 3 6 2] ?H R
+7
 ```
