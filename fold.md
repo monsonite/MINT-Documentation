@@ -11,7 +11,7 @@ Fold takes an initial value `val0`, a pointer to an array and its length and a p
 It returns a single value.
 
 ```text
-:F$\f!($%@\f@\G$2+);
+:F\f!($%@\f@\G$2+)';
 
 :F
 \f!         \\ val0 arr len                     \f:fun
@@ -20,6 +20,7 @@ $%@         \\ arr val arr@
 \f@ \G $    \\ val' arr                         where val' = f(val,arr@)
 2+          \\ val' arr+2
 )
+'           \\ val
 ;
 
 ```
