@@ -1,0 +1,36 @@
+
+Print out 21 characters between ascii 33 and ascii 53
+
+The byte array is defined with pointer aP
+
+The P definition accesses each array member in turn and indexes into the font table that starts at $E000
+It gets the first row of the character and works out what is blackand white pixel.  We are restricting the character to 5 pixels plus 1 space wide hence the 5 
+
+Breaking dowwn the P definition into maneageable sections:
+
+@+\@    Get the element in the array a
+
+32- 8* #E000 +  Subtract ascii 32 (space) multiply by 8 and add to the base address #E000 of the font table
+
+x@+   Add in the row number that we want to prints
+
+\@ z!5(128z@&128=   work through the 8 bits and see which are 0 or 1
+
+"(219\E)0=(32\E)    Print either a white cursor block or a black one
+
+z@{z!)              Retrieve z, multiply by 2 and store
+
+32\E;				Emit a space 
+
+
+The X definition selects and prints the nth member of the array a
+
+The Y definition works through each row in turn of the 8 bytes that form each character.
+
+
+
+:A \[33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 ]$a!;
+A
+:P @+\@ 32- 8* #E000 + x@ + \@ z!5(128z@&128="(219\E)0=(32\E)z@{z!) 32\E;
+:X aP;
+:Y 8(\i@x!0X1X2X3X4X5X6X7X8X9X10X11X12X13X14X15X16X17X18X19X20X21X\N);
