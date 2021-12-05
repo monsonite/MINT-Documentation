@@ -1203,7 +1203,7 @@ There are roughly 30 punctuation and arithmetical symbols available in the print
 | /      | 16-bit by 8-bit division DIV              | a b -- c |
 | <      | 16-bit comparison LT                      | a b -- c |
 | =      | 16 bit comparison EQ                      | a b -- c |
-| >      | 16-bit comparison GT                      | a b -- c |
+| \>     | 16-bit comparison GT                      | a b -- c |
 | {      | shift the number to the left (2\*)        | a -- b   |
 | }      | shift the number to the right (2/)        | a -- b   |
 | \\b    | base 16 flag variable                     | -- a     |
@@ -1252,13 +1252,13 @@ Note: logical NOT can be achieved with 0=
 
 ### User Definitions
 
-| Symbol | Description                | Effect |
-| ------ | -------------------------- | ------ |
-| :č     | define a new word DEF      |        |
-| ;      | end of user definition END |        |
-| ?č     | get the address of the def | -- adr |
+| Symbol  | Description                | Effect |
+| ------- | -------------------------- | ------ |
+| :<CHAR> | define a new word DEF      |        |
+| ;       | end of user definition END |        |
+| ?<CHAR> | get the address of the def | -- adr |
 
-NOTE: "č" is an uppercase letter immediately following opcode which is the name of the definition
+NOTE: <CHAR> is an uppercase letter immediately following operation which is the name of the definition
 
 ### Loops and conditional execution
 
@@ -1292,7 +1292,7 @@ NOTE: "č" is an uppercase letter immediately following opcode which is the name
 | \\1    | text input buffer address | -- adr |
 | \\2    | defs address              | -- adr |
 | \\3    | vars address              | -- adr |
-| \\4    | opcodes address           | -- adr |
+| \\4    | operations address        | -- adr |
 | \\5    | macros address            | -- adr |
 | \\6    | user vars                 | -- adr |
 | \\7    | -                         | -- adr |
@@ -1320,3 +1320,4 @@ NOTE: "č" is an uppercase letter immediately following opcode which is the name
 | ^E     | edit a definition               |
 | ^H     | backspace                       |
 | ^L     | list definitions                |
+| ^P     | print stack                     |
