@@ -41,7 +41,7 @@ Count the numbers in an array.
 ### Greatest
 
 ```
-:G %%> \(\R')(');
+:G %%> \($ ')($ ') ;
 ```
 
 Find the maximum number in an array.
@@ -54,7 +54,7 @@ Find the maximum number in an array.
 ### Least
 
 ```
-:L %%< \(\R')(');
+:L %%< \($ ')($ ') ;
 ```
 
 Find the minimum number in an array.
@@ -89,3 +89,4 @@ Hash of the numbers in an array.
 > 0 [1 4 3 6 2] ?H R
 7
 ```
+
