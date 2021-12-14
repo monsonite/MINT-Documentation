@@ -1208,8 +1208,6 @@ There are roughly 30 punctuation and arithmetical symbols available in the print
 | }      | shift the number to the right (2/)        | a -- b   |
 | \\b    | base 16 flag variable                     | -- a     |
 | \\\_   | sign of number                            | n -- b   |
-| \\M    | most                                      | a b -- m |
-| \\L    | least                                     | a b -- m |
 
 ### Logical Operators
 
@@ -1257,8 +1255,12 @@ Note: logical NOT can be achieved with 0=
 | :<CHAR> | define a new word DEF      |        |
 | ;       | end of user definition END |        |
 | ?<CHAR> | get the address of the def | -- adr |
+| \{      | enter group NUM            | num -- |
+| \}      | exit group                 | --     |
 
-NOTE: <CHAR> is an uppercase letter immediately following operation which is the name of the definition
+NOTE: 
+<CHAR> is an uppercase letter immediately following operation which is the name of the definition
+<NUM> is the group number. There are currently 5 groups numbered 0 - 4
 
 ### Loops and conditional execution
 
@@ -1266,10 +1268,10 @@ NOTE: <CHAR> is an uppercase letter immediately following operation which is the
 | ------ | ------------------------------------------------- | ------ |
 | (      | BEGIN a loop or conditionally executed code block | n --   |
 | )      | END a loop or conditionally executed code block   | --     |
-| \\(    | ifElse \\(`true`)(`false`)                        | n -- n |
+| \\(    | ifElse \\(`true`)(`false`)                        | b --   |
 | \\i    | returns index variable of current loop            | -- val |
 | \\j    | returns index variable of outer loop              | -- val |
-| \\W    | if false then skip to end of loop                 | b --   |
+| \\B    | if true break out of loop                         | b --   |
 
 ### Memory and Variable Operations
 
@@ -1284,24 +1286,14 @@ NOTE: <CHAR> is an uppercase letter immediately following operation which is the
 | ]      | end an array definition                     | -- adr nwords |
 | \\[    | begin a byte array definition               | --            |
 
-### Constants
-
-| Symbol | Description               | Effect |
-| ------ | ------------------------- | ------ |
-| \\0    | data stack start address  | -- adr |
-| \\1    | text input buffer address | -- adr |
-| \\2    | defs address              | -- adr |
-| \\3    | vars address              | -- adr |
-| \\4    | operations address        | -- adr |
-| \\5    | macros address            | -- adr |
-| \\6    | user vars                 | -- adr |
-| \\7    | -                         | -- adr |
-
 ### Variables
 
-| \\b | base16 flag variable | -- adr |
-| \\c | text input buffer pointer variable | -- adr |
-| \\h | heap pointer variable | -- adr |
+| Symbol | Description                        | Effect |
+| ------ | ---------------------------------- | ------ |
+| \\a    | data stack start variable          | -- adr |
+| \\b    | base16 flag variable               | -- adr |
+| \\c    | text input buffer pointer variable | -- adr |
+| \\h    | heap pointer variable              | -- adr |
 
 ### Miscellaneous
 
