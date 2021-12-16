@@ -51,7 +51,7 @@ Where:
 
 ## Definition B: output a nibble to an active segment
 
-Write a definition which takes a value 16-bit value and an 8-bit value representing the currently active digit.
+Write a definition which takes a 16-bit value and an 8-bit value representing the currently active digit.
 We are only interested in the lowest 4 bit of the value. The digit is selected by a 1 in Bit 5 to Bit 0. Bit 6 is kept at 1 at all times.
 
 ```
