@@ -18,22 +18,28 @@ As MINT is an interpreted language, there is no compilation required and the sou
 
 Here is an example of MINT source code, which prints out the Fibonacci Sequence.
 
+```
 :F(a@b@+c!b@a!c@b!c@.);
 0a! 1b! a@. b@. 23F
+```
 
 Once this text is pasted to the target hardware, on pressing the <ENTER> key it will be executed immediately, printing out the familiar Fibonacci Sequence like so:
 
+```
 00000 00001 00001 00002 00003 00005 00008 00013 00021 00034 00055 00089 00144 00233 00377 00610 00987 01597 02584 04181 06765 10946 17711 28657 46368
 
 >
+```
 
-MINT is a compact language, like shorthand, but for clarity it is possible to include extra spaces to make the source more readable. The first line of the Fibonacci definition coulld be rewritten as:
+MINT is a compact language, like shorthand, but for clarity it is possible to include extra spaces to make the source more readable. The first line of the Fibonacci definition could be rewritten as:
 
+```
 :F (a@ b@ + c! b@ a! c@ b! c@ . ) ;
+```
 
 As you can see, MINT uses a variety of familiar characters such as `+ - *` and `/` to implement arithmetical and logical operations, plus alpha-numerical characters, punctuation marks and other symbols. In total, MINT has about 30 basic instructions consisting of single, printable ascii characters.
 
-For the purpose of this document, these characters will be shown in pale blue highlight to distinguish them from other text.
+For the purpose of this document, these characters will be shown in a highlighted typeface to distinguish them from other text.
 
 The characters will be introduced over the next 8 chapters a few at a time.
 
@@ -1201,12 +1207,11 @@ There are roughly 30 punctuation and arithmetical symbols available in the print
 | -      | 16-bit integer subtraction SUB            | a b -- c |
 | \*     | 8-bit by 8-bit integer multiplication MUL | a b -- c |
 | /      | 16-bit by 8-bit division DIV              | a b -- c |
-| <      | 16-bit comparison LT                      | a b -- c |
+| \<     | 16-bit comparison LT                      | a b -- c |
 | =      | 16 bit comparison EQ                      | a b -- c |
 | \>     | 16-bit comparison GT                      | a b -- c |
 | {      | shift the number to the left (2\*)        | a -- b   |
 | }      | shift the number to the right (2/)        | a -- b   |
-| \\b    | base 16 flag variable                     | -- a     |
 | \\\_   | sign of number                            | n -- b   |
 
 ### Logical Operators
@@ -1223,30 +1228,30 @@ Note: logical NOT can be achieved with 0=
 
 ### Stack Operations
 
-| Symbol | Description                                                                   | Effect         |
-| ------ | ----------------------------------------------------------------------------- | -------------- |
-| "      | duplicate the top member of the stack DUP                                     | a -- a a       |
-| '      | drop the top member of the stack DROP                                         | a a -- a       |
-| $      | swap the top 2 members of the stack SWAP                                      | a b -- b a     |
-| %      | over - take the 2nd member of the stack and copy it onto the top of the stack | a b -- a b a   |
-| \\R    | rotate the top 2 members of the stack ROT                                     | a b c -- b c a |
+| Symbol | Description                                  | Effect         |
+| ------ | -------------------------------------------- | -------------- |
+| "      | duplicate the top member of the stack DUP    | a -- a a       |
+| '      | drop the top member of the stack DROP        | a a -- a       |
+| $      | swap the top 2 members of the stack SWAP     | a b -- b a     |
+| %      | over - duplicate the 2nd member of the stack | a b -- a b a   |
+| \\R    | rotate the top 2 members of the stack ROT    | a b c -- b c a |
 
 ### Input & Output Operations
 
-| Symbol | Description                                               | Effect      |
-| ------ | --------------------------------------------------------- | ----------- |
-| #      | the following number is in hexadecimal                    | a --        |
-| .      | print the top member of the stack as a decimal number DOT | a --        |
-| ,      | print the number on the stack as a hexadecimal            | a --        |
-| \`     | \`Everything between ticks is printed as a string\`       | --          |
-| \\$    | text input pointer variable                               | -- adr      |
-| \\E    | emits a char to output                                    | val --      |
-| \\I    | input from a I/O port                                     | port -- val |
-| \\K    | read a char from input                                    | -- val      |
-| \\N    | prints a CRLF to output                                   | --          |
-| \\O    | output to an I/O port                                     | val port -- |
-| \\P    | non-destructively prints stack                            | --          |
-| \\Z    | print definition by number                                | n --        |
+| Symbol | Description                                    | Effect      |
+| ------ | ---------------------------------------------- | ----------- |
+| #      | the following number is in hexadecimal         | a --        |
+| .      | print the top of the stack as a decimal number | a --        |
+| ,      | print the number on the stack as a hexadecimal | a --        |
+| \`     | \`print everything between the ticks\`         | --          |
+| \\$    | text input pointer variable                    | -- adr      |
+| \\E    | emits a char to output                         | val --      |
+| \\I    | input from a I/O port                          | port -- val |
+| \\K    | read a char from input                         | -- val      |
+| \\N    | prints a CRLF to output                        | --          |
+| \\O    | output to an I/O port                          | val port -- |
+| \\P    | non-destructively prints stack                 | --          |
+| \\Z    | print definition by number                     | n --        |
 
 ### User Definitions
 
@@ -1258,20 +1263,18 @@ Note: logical NOT can be achieved with 0=
 | \{      | enter group NUM            | num -- |
 | \}      | exit group                 | --     |
 
-NOTE: 
+NOTE:
 <CHAR> is an uppercase letter immediately following operation which is the name of the definition
 <NUM> is the group number. There are currently 5 groups numbered 0 - 4
 
 ### Loops and conditional execution
 
-| Symbol | Description                                       | Effect |
-| ------ | ------------------------------------------------- | ------ |
-| (      | BEGIN a loop or conditionally executed code block | n --   |
-| )      | END a loop or conditionally executed code block   | --     |
-| \\(    | ifElse \\(`true`)(`false`)                        | b --   |
-| \\i    | returns index variable of current loop            | -- val |
-| \\j    | returns index variable of outer loop              | -- val |
-| \\B    | if true break out of loop                         | b --   |
+| Symbol | Description                           | Effect |
+| ------ | ------------------------------------- | ------ |
+| (      | BEGIN a loop                          | n --   |
+| )      | END a loop                            | --     |
+| \\B    | if true break out of loop BREAK       | b --   |
+| \\(    | if-then-else \\(`true`)(`false`) IFTE | b --   |
 
 ### Memory and Variable Operations
 
@@ -1286,14 +1289,16 @@ NOTE:
 | ]      | end an array definition                     | -- adr nwords |
 | \\[    | begin a byte array definition               | --            |
 
-### Variables
+### System variables
 
-| Symbol | Description                        | Effect |
-| ------ | ---------------------------------- | ------ |
-| \\a    | data stack start variable          | -- adr |
-| \\b    | base16 flag variable               | -- adr |
-| \\c    | text input buffer pointer variable | -- adr |
-| \\h    | heap pointer variable              | -- adr |
+| Symbol | Description                            | Effect |
+| ------ | -------------------------------------- | ------ |
+| \\a    | data stack start variable              | -- adr |
+| \\b    | base16 flag variable                   | -- adr |
+| \\c    | text input buffer pointer variable     | -- adr |
+| \\h    | heap pointer variable                  | -- adr |
+| \\i    | returns index variable of current loop | -- val |
+| \\j    | returns index variable of outer loop   | -- val |
 
 ### Miscellaneous
 
