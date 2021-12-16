@@ -113,7 +113,7 @@ Where:
 - `B` output the lowest 4 bits of number to active segment
 - `C` select next digit, shift nibble down
 - `)` end loop
-- `''` drop digit and shifted number from stack
+- `''` drop the top two stack items
 - `;` end of definition
 
 ## Definition F: scan number to display
@@ -157,4 +157,3 @@ Where:
 - `F` scan the value of `i` to the displays
 - `)` end of loop
 - `0 0B` turn off Ports 1 & 2 but keeping bit 6 of Port 1 high
-
