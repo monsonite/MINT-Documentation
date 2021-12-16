@@ -23,11 +23,11 @@ The first step is to declare a nibble-to-7segments table as a one dimensional by
 \[#EB #28 #CD #AD #2E #A7 #E7 #29 #EF #2F #6F #E6 #C3 #EC #C7 #47]' c!
 ```
 
-`\[` indicates that the numbers following are byte values which will be stored in a byte array allocated on the heap.
-`#EB` is an example of a hexadecimal byte value.
-`]` indicates the end of the array. This pushes the address of the array on the stack followed by its length.
-`'` we don't need the length so we drop it.
-`c!` we store the 16-bit address of the array in the variable `c` so we can access it later.
+- `\[` indicates that the numbers following are byte values which will be stored in a byte array allocated on the heap.
+- `#EB` is an example of a hexadecimal byte value.
+- `]` indicates the end of the array. This pushes the address of the array on the stack followed by its length.
+- `'` we don't need the length so we drop it.
+- `c!` we store the 16-bit address of the array in the variable `c` so we can access it later.
 
 ## Definition A: convert a nibble to 7 segment display representation
 
