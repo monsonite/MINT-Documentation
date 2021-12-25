@@ -59,16 +59,20 @@ number scan --
 ```
 
 ```
-:B #40| 1\O A 2\O;
+:B $ A 2\O #40 | 1\O 10() #40 1\O;
 ```
 
 Where:
 
 - `:B` declare a definition called B
-- `#40|` bitwise-OR `scan` value with hex 40 to keep bit 6 high
-- `1\O` write digit selector value to Port 1 (SCAN)
+- `$` swap `number` with `scan`
 - `A` convert the lower 4 bits of `number` into 7 segment representation
 - `2\O` write the 7 segments data out to Port 2 (DISPLAY)
+- `#40 |` bitwise-OR `scan` value with hex 40 to keep bit 6 high
+- `1\O` write digit selector value to Port 1 (SCAN)
+- `10()` delay for about half a millisecond
+- `#40` output all 0s to the digits but bit 6 kept high
+- `1\O` write digit selector value to Port 1 (SCAN)
 - `;` end of definition
 
 ## Definition C: select next digit, shift nibble down

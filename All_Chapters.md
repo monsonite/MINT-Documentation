@@ -1197,8 +1197,6 @@ Note: logical NOT can be achieved with 0=
 
 Mint is a bytecode interpreter - this means that all of its instructions are 1 byte long. However, the choice of instruction uses printable ASCII characters, as a human readable alternative to assembly language. The interpreter handles 16-bit integers and addresses which is sufficient for small applications running on an 8-bit cpu.
 
-There are roughly 30 punctuation and arithmetical symbols available in the printable ASCII codes. These are assigned to the primitive functions, from which more complex programs can be built.
-
 ### Maths Operators
 
 | Symbol | Description                               | Effect   |
@@ -1207,11 +1205,12 @@ There are roughly 30 punctuation and arithmetical symbols available in the print
 | -      | 16-bit integer subtraction SUB            | a b -- c |
 | \*     | 8-bit by 8-bit integer multiplication MUL | a b -- c |
 | /      | 16-bit by 8-bit division DIV              | a b -- c |
-| \<     | 16-bit comparison LT                      | a b -- c |
+| <      | 16-bit comparison LT                      | a b -- c |
 | =      | 16 bit comparison EQ                      | a b -- c |
 | \>     | 16-bit comparison GT                      | a b -- c |
 | {      | shift the number to the left (2\*)        | a -- b   |
 | }      | shift the number to the right (2/)        | a -- b   |
+| \\b    | base 16 flag variable                     | -- a     |
 | \\\_   | sign of number                            | n -- b   |
 
 ### Logical Operators
@@ -1228,30 +1227,30 @@ Note: logical NOT can be achieved with 0=
 
 ### Stack Operations
 
-| Symbol | Description                                  | Effect         |
-| ------ | -------------------------------------------- | -------------- |
-| "      | duplicate the top member of the stack DUP    | a -- a a       |
-| '      | drop the top member of the stack DROP        | a a -- a       |
-| $      | swap the top 2 members of the stack SWAP     | a b -- b a     |
-| %      | over - duplicate the 2nd member of the stack | a b -- a b a   |
-| \\R    | rotate the top 2 members of the stack ROT    | a b c -- b c a |
+| Symbol | Description                                                          | Effect         |
+| ------ | -------------------------------------------------------------------- | -------------- |
+| "      | duplicate the top member of the stack DUP                            | a -- a a       |
+| '      | drop the top member of the stack DROP                                | a a -- a       |
+| $      | swap the top 2 members of the stack SWAP                             | a b -- b a     |
+| %      | over - take the 2nd member of the stack and copy to top of the stack | a b -- a b a   |
+| \\R    | rotate the top 2 members of the stack ROT                            | a b c -- b c a |
 
 ### Input & Output Operations
 
-| Symbol | Description                                    | Effect      |
-| ------ | ---------------------------------------------- | ----------- |
-| #      | the following number is in hexadecimal         | a --        |
-| .      | print the top of the stack as a decimal number | a --        |
-| ,      | print the number on the stack as a hexadecimal | a --        |
-| \`     | \`print everything between the ticks\`         | --          |
-| \\$    | text input pointer variable                    | -- adr      |
-| \\E    | emits a char to output                         | val --      |
-| \\I    | input from a I/O port                          | port -- val |
-| \\K    | read a char from input                         | -- val      |
-| \\N    | prints a CRLF to output                        | --          |
-| \\O    | output to an I/O port                          | val port -- |
-| \\P    | non-destructively prints stack                 | --          |
-| \\Z    | print definition by number                     | n --        |
+| Symbol | Description                                               | Effect      |
+| ------ | --------------------------------------------------------- | ----------- |
+| #      | the following number is in hexadecimal                    | a --        |
+| .      | print the top member of the stack as a decimal number DOT | a --        |
+| ,      | print the number on the stack as a hexadecimal            | a --        |
+| \`     | print the literal string between \` and \`                | --          |
+| \\$    | text input pointer variable                               | -- adr      |
+| \\E    | emits a char to output                                    | val --      |
+| \\I    | input from a I/O port                                     | port -- val |
+| \\K    | read a char from input                                    | -- val      |
+| \\N    | prints a CRLF to output                                   | --          |
+| \\O    | output to an I/O port                                     | val port -- |
+| \\P    | non-destructively prints stack                            | --          |
+| \\Z    | print definition by number                                | n --        |
 
 ### User Definitions
 
@@ -1269,12 +1268,14 @@ NOTE:
 
 ### Loops and conditional execution
 
-| Symbol | Description                           | Effect |
-| ------ | ------------------------------------- | ------ |
-| (      | BEGIN a loop                          | n --   |
-| )      | END a loop                            | --     |
-| \\B    | if true break out of loop BREAK       | b --   |
-| \\(    | if-then-else \\(`true`)(`false`) IFTE | b --   |
+| Symbol | Description                                       | Effect |
+| ------ | ------------------------------------------------- | ------ |
+| (      | BEGIN a loop or conditionally executed code block | n --   |
+| )      | END a loop or conditionally executed code block   | --     |
+| \\(    | beginIFTE \\(`true`)(`false`)                     | b --   |
+| \\i    | returns index variable of current loop            | -- val |
+| \\j    | returns index variable of outer loop              | -- val |
+| \\B    | if true break out of loop                         | b --   |
 
 ### Memory and Variable Operations
 
@@ -1289,16 +1290,15 @@ NOTE:
 | ]      | end an array definition                     | -- adr nwords |
 | \\[    | begin a byte array definition               | --            |
 
-### System variables
+### System Variables
 
-| Symbol | Description                            | Effect |
-| ------ | -------------------------------------- | ------ |
-| \\a    | data stack start variable              | -- adr |
-| \\b    | base16 flag variable                   | -- adr |
-| \\c    | text input buffer pointer variable     | -- adr |
-| \\h    | heap pointer variable                  | -- adr |
-| \\i    | returns index variable of current loop | -- val |
-| \\j    | returns index variable of outer loop   | -- val |
+| Symbol | Description                        | Effect |
+| ------ | ---------------------------------- | ------ |
+| \\a    | data stack start variable          | -- adr |
+| \\b    | base16 flag variable               | -- adr |
+| \\c    | text input buffer pointer variable | -- adr |
+| \\d    | start of user definitions          | -- adr |
+| \\h    | heap pointer variable              | -- adr |
 
 ### Miscellaneous
 
