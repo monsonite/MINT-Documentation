@@ -469,7 +469,7 @@ We use _DROP_ when there is a value on the top of the stack that we don't need. 
 One example might be when we perform a DIVISION, but we are only interested in the REMAINDER (we are performing a MODULUS operation). We _DROP_ the QUOTIENT from the top of the stack, leaving the REMAINDER for us to use.
 
 ```
-5000 15 / ' .  <ENTER>
+5000 15 / $ ' .  <ENTER>
 00005
 >
 ```
